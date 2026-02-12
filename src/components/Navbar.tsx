@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -50,6 +51,7 @@ const Navbar = () => {
           >
             Let's Talk
           </a>
+          <ThemeToggle />
         </div>
 
         {/* Mobile toggle */}

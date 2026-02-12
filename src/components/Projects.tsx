@@ -8,6 +8,7 @@ const projects = [
     description:
       "Automated pipeline triggered by Asana task movement — pulls SEO data from SurferSEO, generates comprehensive AI-powered SEO guides, and pushes briefs back to the creative team automatically.",
     color: "from-primary/20 to-primary/5",
+    link: "https://docs.google.com/document/d/your-seo-guide-project",
   },
   {
     title: "Automated Client Management System",
@@ -15,6 +16,7 @@ const projects = [
     description:
       "Seamless onboarding system where Stripe payment triggers personalized welcome email sequences, generates custom client folders, and updates a master tracking sheet.",
     color: "from-primary/15 to-transparent",
+    link: "https://docs.google.com/document/d/your-acms-project",
   },
   {
     title: "Omni-Channel Social Media Promotion",
@@ -22,6 +24,7 @@ const projects = [
     description:
       '"Create Once, Post Everywhere" workflow — new YouTube uploads automatically generate formatted posts for Facebook, Instagram, and X.com with extracted thumbnails and descriptions.',
     color: "from-primary/20 to-primary/5",
+    link: "https://docs.google.com/document/d/your-social-media-project",
   },
   {
     title: "AI Content Repurposing Engine",
@@ -29,6 +32,7 @@ const projects = [
     description:
       "Transforms long-form blog posts and transcripts into 10+ social media snippets, LinkedIn carousels, and email newsletters using AI — saving hours of manual editing.",
     color: "from-primary/15 to-transparent",
+    link: "https://docs.google.com/document/d/your-content-engine-project",
   },
   {
     title: "Booking Reservation Automation",
@@ -36,6 +40,7 @@ const projects = [
     description:
       "High-conversion booking system with automated SMS/email reminders, 2-way calendar syncing, and automated follow-ups for no-shows to maximize appointment attendance.",
     color: "from-primary/20 to-primary/5",
+    link: "https://docs.google.com/document/d/your-booking-project",
   },
 ];
 
@@ -56,11 +61,14 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
-            <motion.div
+            <motion.a
               key={project.title}
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
               {...fadeUp}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`group relative p-6 md:p-8 rounded-xl border border-border bg-gradient-to-br ${project.color} hover:border-primary/40 hover:glow-box transition-all duration-300 ${
+              className={`group relative p-6 md:p-8 rounded-xl border border-border bg-gradient-to-br ${project.color} hover:border-primary/40 hover:glow-box transition-all duration-300 block ${
                 i === projects.length - 1 ? "md:col-span-2 md:max-w-[calc(50%-12px)] md:mx-auto" : ""
               }`}
             >
@@ -83,7 +91,7 @@ const Projects = () => {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
