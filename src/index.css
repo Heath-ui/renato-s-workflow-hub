@@ -51,6 +51,41 @@
     --surface-hover: 220 16% 12%;
     --text-dim: 215 12% 42%;
   }
+
+  .light {
+    --background: 0 0% 98%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 185 80% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 16% 93%;
+    --secondary-foreground: 220 20% 20%;
+
+    --muted: 220 14% 95%;
+    --muted-foreground: 215 12% 45%;
+
+    --accent: 185 80% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 14% 88%;
+    --input: 220 14% 88%;
+    --ring: 185 80% 40%;
+
+    --surface: 220 16% 96%;
+    --surface-hover: 220 16% 92%;
+    --text-dim: 215 12% 55%;
+    --glow: 185 80% 40%;
+  }
 }
 
 @layer base {
