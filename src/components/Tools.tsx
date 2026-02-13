@@ -53,17 +53,19 @@ const Tools = () => {
         <div className="marquee-row mb-6">
           <div className="marquee-track">
             {[...tools, ...tools].map((tool, i) => (
-              <div
+              <motion.div
                 key={`${tool.name}-${i}`}
-                className="flex-shrink-0 mx-4 flex items-center gap-3 px-6 py-4 rounded-xl border border-border bg-card/60 backdrop-blur-sm hover:border-primary/40 transition-colors"
+                whileHover={{ scale: 1.08, y: -4 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="flex-shrink-0 mx-4 flex items-center gap-3 px-6 py-4 rounded-xl border border-border bg-card/60 backdrop-blur-sm hover:border-primary/40 hover:shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)] transition-all duration-300 cursor-pointer"
               >
                 <img
                   src={tool.logo}
                   alt={tool.name}
-                  className="h-10 w-10 object-contain rounded-md"
+                  className="h-10 w-10 object-contain rounded-md transition-transform duration-300 group-hover:scale-110"
                 />
                 <span className="font-mono text-sm font-medium whitespace-nowrap">{tool.name}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -72,17 +74,19 @@ const Tools = () => {
         <div className="marquee-row-reverse">
           <div className="marquee-track-reverse">
             {[...tools, ...tools].map((tool, i) => (
-              <div
+              <motion.div
                 key={`${tool.name}-rev-${i}`}
-                className="flex-shrink-0 mx-4 flex items-center gap-3 px-6 py-4 rounded-xl border border-border bg-card/60 backdrop-blur-sm hover:border-primary/40 transition-colors"
+                whileHover={{ scale: 1.08, y: -4 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="flex-shrink-0 mx-4 flex items-center gap-3 px-6 py-4 rounded-xl border border-border bg-card/60 backdrop-blur-sm hover:border-primary/40 hover:shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)] transition-all duration-300 cursor-pointer"
               >
                 <img
                   src={tool.logo}
                   alt={tool.name}
-                  className="h-10 w-10 object-contain rounded-md"
+                  className="h-10 w-10 object-contain rounded-md transition-transform duration-300 group-hover:scale-110"
                 />
                 <span className="font-mono text-sm font-medium whitespace-nowrap">{tool.name}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
