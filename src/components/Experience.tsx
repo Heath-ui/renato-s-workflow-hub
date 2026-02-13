@@ -89,24 +89,6 @@ const Experience = () => {
               ))}
             </div>
 
-            {/* Tech stack badges */}
-            <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.5 }} className="mt-10">
-              <h4 className="font-mono text-sm text-muted-foreground mb-4">Tech Stack</h4>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Zapier", "Make.com", "n8n", "GoHighLevel", "Google Apps Script",
-                  "JavaScript", "REST APIs", "Webhooks", "Airtable", "OpenAI",
-                  "Stripe", "Twilio", "Google Sheets",
-                ].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-xs font-mono rounded-full border border-border bg-secondary text-secondary-foreground hover:border-primary/40 transition-colors"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
           </div>
         </div>
       </div>

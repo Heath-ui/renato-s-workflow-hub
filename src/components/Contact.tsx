@@ -83,7 +83,7 @@ const Contact = () => {
             </div>
 
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/renato-balbutinii/"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-4 p-5 rounded-xl border border-border bg-card hover:border-primary/40 hover:glow-box transition-all duration-300"
