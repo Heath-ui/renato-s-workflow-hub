@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Linkedin, ArrowUpRight, Send, Calendar } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { Mail, Phone, MapPin, Linkedin, ArrowUpRight, Calendar, MessageSquare } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -9,24 +9,11 @@ const fadeUp = {
   viewport: { once: true, margin: "-50px" },
 };
 
-const Contact = () => {
-  const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", email: "", service: "", date: "", time: "", message: "" });
+const CALENDLY_URL = "https://calendly.com/renatobalbutinii/30min";
+const EMAIL = "renatobalbutinii@gmail.com";
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      toast({ title: "Please fill in all required fields", variant: "destructive" });
-      return;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(form.email)) {
-      toast({ title: "Please enter a valid email", variant: "destructive" });
-      return;
-    }
-    toast({ title: "Meeting request sent!", description: "I'll get back to you within 24 hours." });
-    setForm({ name: "", email: "", service: "", date: "", time: "", message: "" });
-  };
+const Contact = () => {
+  const [showCalendly, setShowCalendly] = useState(false);
 
   return (
     <section id="contact" className="section-padding">
@@ -35,7 +22,7 @@ const Contact = () => {
           <span className="text-xs font-mono tracking-widest uppercase text-primary">Get Started</span>
           <h2 className="font-mono text-3xl md:text-4xl font-bold mt-3">Let's Work Together</h2>
           <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-            Ready to automate your workflows and save hours every week? Schedule a meeting and let's discuss your needs.
+            Ready to automate your workflows and save hours every week? Book a meeting or send me a message directly.
           </p>
         </motion.div>
 
@@ -99,102 +86,53 @@ const Contact = () => {
             </a>
           </motion.div>
 
-          {/* Right - Schedule Meeting Form */}
-          <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.2 }}>
-            <div className="p-6 md:p-8 rounded-xl border border-border bg-card">
-              <div className="flex items-center gap-3 mb-6">
-                <Calendar className="w-5 h-5 text-primary" />
-                <h3 className="font-mono text-xl font-semibold">Schedule a Meeting</h3>
+          {/* Right - Action Buttons */}
+          <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col justify-center gap-6">
+            <button
+              onClick={() => setShowCalendly(true)}
+              className="group flex items-center gap-5 p-6 md:p-8 rounded-xl border border-border bg-card hover:border-primary/40 hover:glow-box transition-all duration-300"
+            >
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
+                <Calendar className="w-7 h-7 text-primary" />
               </div>
+              <div className="text-left flex-1">
+                <h3 className="font-mono text-lg font-semibold mb-1">Book a Meeting</h3>
+                <p className="text-sm text-muted-foreground">Schedule a 30-minute call via Calendly to discuss your automation needs.</p>
+              </div>
+              <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+            </button>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-xs text-muted-foreground mb-1.5 block">Name *</label>
-                    <input
-                      type="text"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      maxLength={100}
-                      className="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:border-primary/50 transition-colors"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs text-muted-foreground mb-1.5 block">Email *</label>
-                    <input
-                      type="email"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      maxLength={255}
-                      className="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:border-primary/50 transition-colors"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-xs text-muted-foreground mb-1.5 block">Service Interested In</label>
-                  <select
-                    value={form.service}
-                    onChange={(e) => setForm({ ...form, service: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:border-primary/50 transition-colors"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="api-integration">API Integration & Connectivity</option>
-                    <option value="workflow-design">Workflow Design & Optimization</option>
-                    <option value="ai-automation">AI-Powered Automation</option>
-                    <option value="crm-automation">CRM & Sales Automation</option>
-                    <option value="data-pipeline">Data Pipeline Management</option>
-                    <option value="communication">Communication Automation</option>
-                  </select>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-xs text-muted-foreground mb-1.5 block">Preferred Date</label>
-                    <input
-                      type="date"
-                      value={form.date}
-                      onChange={(e) => setForm({ ...form, date: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:border-primary/50 transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs text-muted-foreground mb-1.5 block">Preferred Time</label>
-                    <input
-                      type="time"
-                      value={form.time}
-                      onChange={(e) => setForm({ ...form, time: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:border-primary/50 transition-colors"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-xs text-muted-foreground mb-1.5 block">Message *</label>
-                  <textarea
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    maxLength={1000}
-                    rows={4}
-                    className="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:border-primary/50 transition-colors resize-none"
-                    placeholder="Tell me about your project and what you'd like to automate..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors glow-box"
-                >
-                  <Send className="w-4 h-4" />
-                  Schedule Meeting
-                </button>
-              </form>
-            </div>
+            <a
+              href={`mailto:${EMAIL}?subject=Automation%20Inquiry`}
+              className="group flex items-center gap-5 p-6 md:p-8 rounded-xl border border-border bg-card hover:border-primary/40 hover:glow-box transition-all duration-300"
+            >
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
+                <MessageSquare className="w-7 h-7 text-primary" />
+              </div>
+              <div className="text-left flex-1">
+                <h3 className="font-mono text-lg font-semibold mb-1">Send a Message</h3>
+                <p className="text-sm text-muted-foreground">Email me directly at {EMAIL} and I'll respond within 24 hours.</p>
+              </div>
+              <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+            </a>
           </motion.div>
         </div>
       </div>
+
+      {/* Calendly Dialog */}
+      <Dialog open={showCalendly} onOpenChange={setShowCalendly}>
+        <DialogContent className="max-w-3xl h-[80vh] p-0 overflow-hidden">
+          <DialogHeader className="p-6 pb-0">
+            <DialogTitle className="font-mono">Schedule a Meeting</DialogTitle>
+          </DialogHeader>
+          <iframe
+            src={CALENDLY_URL}
+            className="w-full flex-1 border-0"
+            style={{ height: "calc(80vh - 60px)" }}
+            title="Calendly Scheduling"
+          />
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
