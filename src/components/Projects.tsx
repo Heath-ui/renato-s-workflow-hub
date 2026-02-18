@@ -3,44 +3,36 @@ import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    title: "SEO Guide Generator via AI",
-    stack: ["Make.com", "OpenAI API", "SurferSEO", "Asana"],
+    title: "n8n Automations",
+    stack: ["n8n", "API Integrations", "Workflow Automation"],
     description:
-      "Automated pipeline triggered by Asana task movement — pulls SEO data from SurferSEO, generates comprehensive AI-powered SEO guides, and pushes briefs back to the creative team automatically.",
+      "Advanced workflow automations built with n8n — from data pipelines and webhook-driven processes to multi-step integrations across platforms.",
     color: "from-primary/20 to-primary/5",
-    link: "https://docs.google.com/document/d/your-seo-guide-project",
+    link: "https://docs.google.com/presentation/d/1HlejTO2fqqhti0l6WTuwFIbjIpFdxBV0XoLvg3YbsIs/edit?usp=sharing",
   },
   {
-    title: "Automated Client Management System",
-    stack: ["Stripe", "Gmail API", "Google Apps Script"],
+    title: "Make.com Automations",
+    stack: ["Make.com", "Scenarios", "Multi-App Workflows"],
     description:
-      "Seamless onboarding system where Stripe payment triggers personalized welcome email sequences, generates custom client folders, and updates a master tracking sheet.",
+      "Visual automation scenarios on Make.com — connecting apps, transforming data, and orchestrating complex multi-step business processes.",
     color: "from-primary/15 to-transparent",
-    link: "https://docs.google.com/document/d/your-acms-project",
+    link: "https://docs.google.com/presentation/d/1ykNdJPpomH8xdinVnnWQ0mQUZ9Y4u6sSX6T77fVyjJU/edit?usp=sharing",
   },
   {
-    title: "Omni-Channel Social Media Promotion",
-    stack: ["YouTube API", "Facebook Graph API", "X API", "n8n"],
+    title: "Zapier Automations",
+    stack: ["Zapier", "Zaps", "App Connectors"],
     description:
-      '"Create Once, Post Everywhere" workflow — new YouTube uploads automatically generate formatted posts for Facebook, Instagram, and X.com with extracted thumbnails and descriptions.',
+      "Streamlined Zapier workflows automating repetitive tasks — trigger-based actions, multi-step zaps, and seamless app-to-app data flow.",
     color: "from-primary/20 to-primary/5",
-    link: "https://docs.google.com/document/d/your-social-media-project",
+    link: "https://docs.google.com/presentation/d/17qTiD1NjUygcLDwqaOebTqgfCfl9H3DJRc2pXvz7-bE/edit?usp=sharing",
   },
   {
-    title: "AI Content Repurposing Engine",
-    stack: ["OpenAI", "Make.com", "Google Drive"],
+    title: "GoHighLevel Automations",
+    stack: ["GoHighLevel", "CRM", "Marketing Automation"],
     description:
-      "Transforms long-form blog posts and transcripts into 10+ social media snippets, LinkedIn carousels, and email newsletters using AI — saving hours of manual editing.",
+      "End-to-end GoHighLevel solutions — automated funnels, CRM workflows, appointment booking systems, and client communication pipelines.",
     color: "from-primary/15 to-transparent",
-    link: "https://docs.google.com/document/d/your-content-engine-project",
-  },
-  {
-    title: "Booking Reservation Automation",
-    stack: ["GoHighLevel", "Google Calendar", "Twilio"],
-    description:
-      "High-conversion booking system with automated SMS/email reminders, 2-way calendar syncing, and automated follow-ups for no-shows to maximize appointment attendance.",
-    color: "from-primary/20 to-primary/5",
-    link: "https://docs.google.com/document/d/your-booking-project",
+    link: "https://docs.google.com/presentation/d/1dvF_pZpvyir_HUO44jGLbpWWhQb1HIA2pJsxyTt7aLY/edit?usp=sharing",
   },
 ];
 
@@ -68,9 +60,7 @@ const Projects = () => {
               rel="noopener noreferrer"
               {...fadeUp}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`group relative p-6 md:p-8 rounded-xl border border-border bg-gradient-to-br ${project.color} hover:border-primary/40 hover:glow-box transition-all duration-300 block ${
-                i === projects.length - 1 ? "md:col-span-2 md:max-w-[calc(50%-12px)] md:mx-auto" : ""
-              }`}
+              className={`group relative p-6 md:p-8 rounded-xl border border-border bg-gradient-to-br ${project.color} hover:border-primary/40 hover:glow-box transition-all duration-300 block`}
             >
               <div className="flex items-start justify-between mb-4">
                 <h3 className="font-mono text-lg font-semibold pr-4">{project.title}</h3>
